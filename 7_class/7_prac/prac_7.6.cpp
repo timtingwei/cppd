@@ -1,5 +1,4 @@
 #include <iostream>
-
 struct Sales_data{
     //
     std::string isbn() const{ return bookNo; }
@@ -46,7 +45,6 @@ std::istream &read (std::istream &is, Sales_data &item){
     item.revenue = price * item.units_sold;
     return is;
 }
-
 
 int main()
 {

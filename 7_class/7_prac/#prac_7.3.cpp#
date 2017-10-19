@@ -72,3 +72,4 @@ int main()
 "total.revenue = " << total.revenue << std::endl;
     return 0;
 }
+

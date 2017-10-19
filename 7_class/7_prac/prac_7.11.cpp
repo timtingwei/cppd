@@ -23,11 +23,13 @@
 
 };*/
 
+
 int main()
 {
     Sales_data total;
     std::string s =  "xxx";
     Sales_data::Sales_data(s);
+    
 
     return 0;
 }

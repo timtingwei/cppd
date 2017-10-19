@@ -3,7 +3,7 @@
 struct Sales_data{
     //
     std::string isbn() const{ return bookNo; }
-    Sa0les_data& combine(const Sales_data&);
+    Sales_data& combine(const Sales_data&);
     double avg_price() const;
     std::ostream& transp(std::ostream&, std::istream&);
     std::string bookNo;
@@ -30,37 +30,6 @@ Sales_data& Sales_data::combine(const Sales_data &rhs){
     return *this;
 }
 
-/*std::ostream & Sales_data::print (std::ostream &, const Sales_data&){
-    //
-    std::cout << total << std::endl;
-    return *cout;
-}
-std::istream & Sales_data::read (std::istream &, const Sales_data&){
-    std::cin >> total;
-    return *cin;
-}*/
-
-std::ostream & Sales_data::transp(std::ostream &cout, std::istream 
-&cin){
-    Sales_data total;
-    if (read(cin, total)){
-        Sales_data trans;
-        while (read(cin, trans)){
-            if (total.isbn() == trans.isbn())
-                total.combine(trans);
-    	    else{
-                print (cout, total) << std::endl;
-                total = trans;
-            }
-        }
-        print (cout, total) << std::endl;
-    }else{
-        std::cerr << "No data??" << std::endl;
-    }
-}
-
-
-
 int main()
 {
     Sales_data total;
@@ -72,3 +41,4 @@ int main()
 "total.revenue = " << total.revenue << std::endl;
     return 0;
 }
+
