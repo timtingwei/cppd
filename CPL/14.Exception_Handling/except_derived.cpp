@@ -9,7 +9,9 @@ int INT_MIN = -4;
 class Matherr {
   // ...
  public:
-  std::cout << "Initialize as Matherr" << std::endl;
+  Matherr() {
+    std::cout << "Initialize as Matherr" << std::endl;
+  }
   virtual void debug_print() const {std::cerr << "Math error" << std::endl;}
 };
 
@@ -20,7 +22,7 @@ class Int_overflow : public Matherr {
  public:
   Int_overflow(const char* p, int a, int b) {
     op = p; a1 = a; a2 = b;
-    std::cout << "Initialize as Matherr" << std::endl;
+    std::cout << "Initialize as Int_overflow" << std::endl;
   }
   virtual void debug_print() const {std::cerr << op << '(' << a1 << ',' << a2 << ')' << std::endl;}
 };
@@ -46,14 +48,14 @@ void g() {
     int i1 = add(1, 2);
     int i2 = add(INT_MAX, -2);
     int i3 = add(INT_MAX, 2);         // 这里发生异常
-    int i4 = add(INT_MIN, -2);        // 这里发生异常, 但i3抛出异常在先
+    int i4 = add(INT_MIN, -2);        // 这里发生异常, i3抛出异常先, i4不会抛出
     // std:: cout << "i4 = " << i4 << std::endl; 
   }
   catch (Overflow) {
     // 处理Overflow或者任何Overflow派生的异常
   }
   
-  catch (Matherr &m) {
+  catch (Matherr& m) {
     // 处理所有不是Overflowi派生的Matherr
     std::cout << "catched in Matherr" << std::endl;
     m.debug_print();
