@@ -1,0 +1,36 @@
+/*  ------------------------------
+    Copyright <2018> [Tim Hu]
+    email: timtingwei@hotamail.com    
+   ------------------------------
+   File:temp_string.cpp
+   Date:Wed Jan  3 11:17:00 CST 2018
+   -----------------------------
+*/
+
+template<class C> class String {
+  struct Srep;
+  Srep *rep;
+ public:
+  String();
+  String(const C*);
+  String(const String&);
+
+  C read(int i) const;
+  // ...
+};
+
+class Jchar {
+  // 日文字符
+};
+
+
+
+int main() {
+  // ..
+  String<char> cs;
+  String<unsigned_char> us;
+  String<wchar_t> ws;
+  String<Jchar> js;
+
+  return 0;
+}
