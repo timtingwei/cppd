@@ -7,7 +7,7 @@
    -----------------------------
 */
 
-#include iostream
+#include <iostream>
 
 class Name {
   const char* s;
@@ -17,9 +17,23 @@ class Table {
   Name* p;
   size_t sz;
  public:
-  Table(size_t s = 15) { p = new Name[sz = s];}   // constructor
-  ~Table() {delete[] p;}                          // deconstructor
-
+  Table(size_t s = 15) {                          // constructor
+    p = new Name[sz = s];
+    for (int i = 0; i < sz; i++) {
+      // p[i] = 'c';
+      std::cout << "i = " << i << std::endl;
+    }
+  }
+  ~Table() {                                      // deconstructor
+    delete[] p;
+    std::cout << "sz = " << sz << std::endl;
+  }
   Name* lookup(const char*);
   bool insert(Name*);
 };
+
+int main() {
+  Table();
+
+  return 0;
+}
