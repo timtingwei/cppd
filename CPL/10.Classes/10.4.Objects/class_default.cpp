@@ -8,7 +8,8 @@
 */
 
 /*
-  编译器生成的默认构造函数将隐式地为类类型的成员和它的基类调用有关的默认构造函数
+  1, 编译器生成的默认构造函数将隐式地为类类型的成员和它的基类调用有关的默认构造函数
+  2, const 和引用成员的类不能进行默认构造
  */
 
 #include <iostream>
@@ -50,6 +51,14 @@ struct Tables {
   Table vt[2];
 };
 
+// const 和引用成员的类不能进行默认构造
+struct X {
+  // const int a;
+  // const int& r;
+  // int &r;
+  Table t1;
+};
+
 int main() {
   // Table();
 
@@ -61,6 +70,8 @@ int main() {
 
   Tables tt;    // tt.t1, tt.vt的每个成员调用Table15;
                 // 但不会区初始化tt.i 和 tt.vi, 他们不是类类型的对象
+
+  X x;   // Error: X无默认构造函数
 
   return 0;
 }
