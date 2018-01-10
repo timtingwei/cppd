@@ -102,11 +102,43 @@ void f5() {  // DEBUG: 为什么不能通过数组中保存的指针修改数组
   std::cout << *(iarr[0]) << ' ' << *(iarr[1]) << std::endl;  // 1 2
 }
 
+void another_revise_value_ptr(int** ptrArr, int n) {
+  // 索引为n的指向的指针所指向的整数递增1
+  (**(ptrArr+n))+=1;
+}
+
+void another_call_revise() {
+  int a = 1, b = 2, c = 3;
+  int* pa = &a, *pb = &b, *pc = &c;
+  int* ptrArr[] = {pa, pb, pc};
+  another_revise_value_ptr(ptrArr, 2);
+  std::cout << "**(ptrArr)   = " << **(ptrArr)   << '\n'
+            << "**(ptrArr+1) = " << **(ptrArr+1) << '\n'
+            << "**(ptrArr+2) = " << **(ptrArr+2) << std::endl;
+}
+
+void f7() {     // ERROR: 先存放再输入不会修改数组中的数据
+  int a, b;
+  int* pa = &a, * pb = &b;
+  int* iarr[2] = {pa, pb};
+  std::cin >> a >> b;   // 也能合理:先存放, 再输入
+  // std::cout << **iarr << ' ' << **(iarr+1) << std::endl;
+  // 4197661 0
+  std::cout << "iarr = " << iarr << '\n'
+            << "*iarr = " << *iarr << '\n'
+            << "**iarr = " << **iarr << std::endl;
+}
+
 
 int main() {
+  // f0();
   // f1();
+  // f3();
+  // f4();
   // call_revise();
-  f5();
+  // f5();
+  // another_call_revise();
+  f7();
   return 0;
 }
 
