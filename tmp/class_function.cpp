@@ -14,9 +14,10 @@
 #include <iostream>
 
 // 定义一个函数对象
+
 class Sum{
  public:
-  int sum = 0;
+  int sum;
   void operator()(int iarr[], int n) {
     for (int i = 0; i < n; i++)
       sum += iarr[i];
@@ -103,6 +104,8 @@ void increase(Vector<T> V) {
   V.traverse(Increase<T>());
 }
 
+// 为什么不用实例化, 带入参数便可直接调用??
+
 
 int main() {
   // ..
@@ -122,5 +125,7 @@ int main() {
   v.print_vector();
   increase(v);
   v.print_vector();
+
+  Sum(iarr, n);
   return 0;
 }
