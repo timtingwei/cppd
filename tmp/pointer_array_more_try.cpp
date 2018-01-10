@@ -14,6 +14,10 @@
 */
 
 #include <iostream>
+template <typename T> class Name;
+void print_instance_data_in_array(Name<int>* nArr, int size);
+
+
 
 /*
 int* convert_size_structor(int** size_arr) {
@@ -51,7 +55,6 @@ void f_array() {
   int* size_arr[] = {size_ppArr, size_pArr};
   // convert_size_structor(size_arr);
   print_arr_b(ppArr);
-
 }
 
 
@@ -61,12 +64,19 @@ class Name {
  public:
   Name(char* c, int length): _c(c), _length(length) {}
   char* getName() const;
+  int getLength() const;
 };
 
 template <typename T>
 char* Name<T>::getName() const {
   return _c;
 }
+
+template <typename T>
+int Name<T>::getLength() const {
+  return _length;
+}
+
 
 
 void class_array() {
@@ -75,6 +85,8 @@ void class_array() {
   int length1 = 3, length2 = 2;
   Name<int> name1(c1, length1), name2(c2, length2);
   Name<int> nArr[] = {name1, name2};
+  int size = 2;
+  print_instance_data_in_array(nArr, size);
 }
 
 void f() {
@@ -83,14 +95,22 @@ void f() {
   Name<int> n(c, length);
 }
 
-// void print_instance_data_in_array()
+void print_instance_data_in_array(Name<int>* nArr, int size) {
+  for (int i = 0; i < size; i++) {
+    std::cout << "Name = ";
+    for (int j = 0; j < nArr[i].getLength(); j++) {
+      std::cout << *((nArr[i].getName())+j);
+    }
+    std::cout << "\n";
+  }
+}
 
 
 int main() {
   // ..
   // f_array();
-  // class_array();
-  f();
+  class_array();
+  // f();
   return 0;
 }
 
