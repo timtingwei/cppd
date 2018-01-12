@@ -14,9 +14,12 @@
  */
 
 void f_else() {
-  int i = 5;
+  int i = 6;
   if (i == 5) {std::cout << "i = 5" << std::endl;
-  } else {std::cout << "else if" << std::endl;}
+  } else {
+    if (i > 5) {std::cout << "i > 5" << std::endl;
+    } else { std::cout << "i < 5" << std::endl;}
+  }
 }
 
 void f_else_if() {
@@ -27,6 +30,6 @@ void f_else_if() {
 }
 
 int main() {
-  // f();
-  f_else_if();
+  f_else();
+  // f_else_if();
 }
