@@ -29,7 +29,14 @@ void f_else_if() {
   else if (i > 5) std::cout << "i > 5" << std::endl;
 }
 
+void f_if() {
+  int i = 6;
+  if (i == 6) std::cout << "i = 6" << std::endl;
+  if (i != 7) std::cout << "i != 7" << std::endl;
+}
+
 int main() {
-  f_else();
+  // f_else();
   // f_else_if();
+  f_if();
 }
