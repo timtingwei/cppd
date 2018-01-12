@@ -39,7 +39,7 @@ void fun() {
   bool foo = true, bar = true, baz = true;
   if (foo) {
     // <- this block is only executed if 'foo' is true
-    std::cout << "if(foo) <- this block is only executed if 'foo' is true\n";
+    std::cout << "if(foo)\n";
   } else if (bar) {  // <- 'bar' is only checked if 'foo' is false
     // <- this block only executed if 'foo' is false and 'bar' is true
     std::cout << "else if(bar)\n";
