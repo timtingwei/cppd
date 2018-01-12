@@ -35,8 +35,32 @@ void f_if() {
   if (i != 7) std::cout << "i != 7" << std::endl;
 }
 
+void fun() {
+  bool foo = true, bar = true, baz = true;
+  if( foo ) {
+    // <- this block is only executed if 'foo' is true
+    std::cout << "if(foo) <- this block is only executed if 'foo' is true\n";
+  }
+  else if( bar )  // <- 'bar' is only checked if 'foo' is false
+  {
+    // <- this block only executed if 'foo' is false and 'bar' is true
+    std::cout << "else if(bar) <- this block only executed if 'foo' is false and 'bar' is true\n";
+  }
+  else
+  {
+    // <- this block only executed if 'foo' and 'bar' are both false
+    std::cout << "else {} <- this block only executed if 'foo' and 'bar' are both false\n";
+  }
+  if( baz ) // <- no 'else', so previous 'ifs' don't matter
+  {
+    // <- this block only executed if 'baz' is true.   foo/bar don't matter
+    std::cout << "if(baz) <- this block only executed if 'baz' is true.   foo/bar don't matter\n";
+  }
+}
+
 int main() {
   // f_else();
   // f_else_if();
-  f_if();
+  // f_if();
+  fun();
 }
