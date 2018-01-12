@@ -37,24 +37,19 @@ void f_if() {
 
 void fun() {
   bool foo = true, bar = true, baz = true;
-  if( foo ) {
+  if (foo) {
     // <- this block is only executed if 'foo' is true
     std::cout << "if(foo) <- this block is only executed if 'foo' is true\n";
-  }
-  else if( bar )  // <- 'bar' is only checked if 'foo' is false
-  {
+  } else if (bar) {  // <- 'bar' is only checked if 'foo' is false
     // <- this block only executed if 'foo' is false and 'bar' is true
-    std::cout << "else if(bar) <- this block only executed if 'foo' is false and 'bar' is true\n";
-  }
-  else
-  {
+    std::cout << "else if(bar)\n";
+  } else {
     // <- this block only executed if 'foo' and 'bar' are both false
-    std::cout << "else {} <- this block only executed if 'foo' and 'bar' are both false\n";
+    std::cout << "else {}\n";
   }
-  if( baz ) // <- no 'else', so previous 'ifs' don't matter
-  {
+  if (baz) {   // <- no 'else', so previous 'ifs' don't matter
     // <- this block only executed if 'baz' is true.   foo/bar don't matter
-    std::cout << "if(baz) <- this block only executed if 'baz' is true.   foo/bar don't matter\n";
+    std::cout << "if(baz)\n";
   }
 }
 
