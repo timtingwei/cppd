@@ -36,7 +36,7 @@ void f_if() {
 }
 
 void fun() {
-  bool foo = true, bar = true, baz = true;
+  bool foo = false, bar = true, baz = true;
   if (foo) {
     // <- this block is only executed if 'foo' is true
     std::cout << "if(foo)\n";
@@ -51,11 +51,20 @@ void fun() {
     // <- this block only executed if 'baz' is true.   foo/bar don't matter
     std::cout << "if(baz)\n";
   }
+  // else if(bar)
+  // if(baz)
+}
+
+int if_fun() {
+  int i = 4, count = 0;
+  (i == 4) ? count++
+      : i = 4;
 }
 
 int main() {
   // f_else();
   // f_else_if();
   // f_if();
+  if_fun();
   fun();
 }
