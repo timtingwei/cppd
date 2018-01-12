@@ -6,6 +6,8 @@
    Date:Thu Jan 11 22:05:13 CST 2018
    -----------------------------
 */
+#include <stdlib.h>
+#include <iostream>
 
 
 /*
@@ -35,6 +37,13 @@ int* f1(int* iarr) {
 void call_f1() {
   int iarr[] = {0, 3};
   f1(iarr);
+}
+
+// 强制返回指针
+int* fun() {
+  int* point = (int*)malloc(sizeof *point);
+  *point = 12;
+  return point;
 }
 
 int main() {
