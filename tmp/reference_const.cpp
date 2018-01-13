@@ -67,8 +67,8 @@ void f2() {
   std::cout << "*p_a = " << *p_a << ", a = " << a << std::endl;
   const int* p_b = &b;          // 指向const int的指针
   // 指针地址可变, 指向的元素转换成const不可变
-  const_cast<int*> p_b;
-  // (*p_b)++;
+  // *(const_cast<int*>(p_b))+=1;
+  (*p_b)++;
   p_b = &c;
   std::cout << "*p_b = " << *p_b << ", b = " << b << std::endl;
   int* const cp_c = &c;          // 指向int的const指针
@@ -84,10 +84,14 @@ void f2() {
   std::cout << "*cp_cd = " << *cp_cd << ", d = " << d << std::endl;
 }
 
+void f3() {
+  int a = 0;
+  int& const cref_a = a;
+}
 
 int main() {
   // f();
-  f2();
+  // f2();
 
   return 0;
 }
