@@ -63,18 +63,25 @@ void f2() {
   int a = 0, b = 0, c = 0, d = 0;
   int* p_a = &a;                 // 指向int的指针
   // 指针地址可变, 指向的a可变
-  // (*p_a)++; p_a = &b;
-  // std::cout << "*p_a = " << *p_a << ",a = " << a << std::endl;
+  (*p_a)++; p_a = &b;
+  std::cout << "*p_a = " << *p_a << ", a = " << a << std::endl;
   const int* p_b = &b;          // 指向const int的指针
   // 指针地址可变, 指向的元素转换成const不可变
+  const_cast<int*> p_b;
   // (*p_b)++;
-  // p_b = &c;
-  // std::cout << "*p_b = " << *p_b << ",b = " << b << std::endl;
+  p_b = &c;
+  std::cout << "*p_b = " << *p_b << ", b = " << b << std::endl;
   int* const cp_c = &c;          // 指向int的const指针
   // 指针地址不可变, 指向的元素可以变
-  int const* cp_c1 = &c;         // 指向const int的指针, 仍采用上种方法
+  (*cp_c)++;
+  // cp_c = &d;
+  std::cout << "*cp_c = " << *cp_c << ", c = " << c << std::endl;
+  // int const* cp_c1 = &c;         // 指向const int的指针, 仍采用上种方法
   const int* const cp_cd = &d;   // 指向const int的const指针
   // 指针地址不可变, 指向值不可变
+  // (*cp_cd)++;
+  // cp_cd = &a;
+  std::cout << "*cp_cd = " << *cp_cd << ", d = " << d << std::endl;
 }
 
 
