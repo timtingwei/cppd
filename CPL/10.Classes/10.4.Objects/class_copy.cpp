@@ -34,12 +34,12 @@ class Table {
 
 void h() {
   Table t1;
-  Table t2 = t1;
+  // Table t2 = t1;    // ERROR: 复制初始化
   Table t3;
 
-  t3 = t2;
+  // t3 = t2;          // ERROR: 复制赋值
 }
-
+// t1所创建而分配的数组, 将同时分配给t1, t2, t3, 被删除3次, 所导致结果是无意义的
 
 int main() {
   h();
