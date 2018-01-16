@@ -38,7 +38,7 @@ void f(int i) {
   if (i > 0) {
     Table cc(3);
   }
-  Table dd(3);
+  Table dd(4);
 }
 
 int main() {
