@@ -20,12 +20,12 @@ class Table {
   explicit Table(size_t s = 15) {                 // constructor
     p = new Name[sz = s];
     for (int i = 0; i < sz; i++) {
-      std::cout << "i = " << i << std::endl;
+      std::cout << "in Table() i = " << i << std::endl;
     }
   }
   ~Table() {                                      // deconstructor
     delete[] p;
-    std::cout << "sz = " << sz << std::endl;
+    std::cout << "in ~Table() sz = " << sz << std::endl;
   }
   Name* lookup(const char*);
   bool insert(Name*);
@@ -41,7 +41,7 @@ void f(int i) {
 }
 
 int main() {
-  f();
+  f(2);
 
   return 0;
 }
