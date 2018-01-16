@@ -20,8 +20,9 @@ class Table {
   explicit Table(size_t s = 15) {                 // constructor
     p = new Name[sz = s];
     for (int i = 0; i < sz; i++) {
-      std::cout << "in Table() i = " << i << std::endl;
+      // std::cout << "in Table() i = " << i << std::endl;
     }
+    std::cout << "in Table() sz = " << sz << std::endl;
   }
   ~Table() {                                      // deconstructor
     delete[] p;
