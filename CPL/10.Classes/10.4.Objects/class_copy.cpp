@@ -30,7 +30,16 @@ class Table {
   }
   Name* lookup(const char*);
   bool insert(Name*);
+
+  // 将复制定义清楚
+  Table(const Table&);              // 复制构造函数
+  Table& operator=(const Table&);   // 复制赋值
 };
+
+// Table::Table(const Table& t) {
+//   p = 
+// }
+
 
 void h() {
   Table t1;
