@@ -16,6 +16,11 @@ class Name {
 void test_array() {
   Name* t;
   t[0];
+
+  int i = 5;
+  int* ptr_i = &i;
+  int r = ptr_i[0];
+  std::cout << "r = " << r << std::endl;
 }
 
 /*
