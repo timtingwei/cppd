@@ -63,10 +63,20 @@ class Club {
   Table officers;
   Date founded;
   // ...
+ public:
   Club(const std::string& n, Date fd);
 };
 
+Club::Club(const std::string& n, Date fd)
+    : name(n), members(), officers(), founded(fd)
+{
+  // ..
+}
+
 void h() {
+  const std::string& n = "tim";
+  Date fd;
+  Club(n, fd);
   
 }
 
