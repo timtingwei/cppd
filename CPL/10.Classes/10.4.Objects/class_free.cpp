@@ -58,6 +58,7 @@ void h() {
 
   delete p;
   // delete p;    // ERROR: 删除两次
+  Table a = *p;
 }
 
 // 没有删除会造成内存泄漏, 很长时间运行就会造成严重问题。
