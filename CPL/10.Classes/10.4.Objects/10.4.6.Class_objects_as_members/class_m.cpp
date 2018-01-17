@@ -67,11 +67,21 @@ class Club {
   Club(const std::string& n, Date fd);
 };
 
+// Club::Club(const std::string& n, Date fd)
+//     : name(n), members(), officers(), founded(fd)
+// {
+  // ..
+// }
+
 Club::Club(const std::string& n, Date fd)
-    : name(n), members(), officers(), founded(fd)
+    : name(n), founded(fd)
 {
   // ..
 }
+// 构造函数在类容器本身构造函数执行之前执行
+// 构造函数按照成员在类中的声明顺序执行。 为了避免混乱, 按照声明顺序描述初始式
+
+// 对象被销毁, 将自己的析构函数先执行, 然后按照与声明相反的顺序执行各个成员的析构函数。构造函数自下而上(成员在先), 析构函数自下而上(成员在后)拆除。
 
 void h() {
   const std::string& n = "tim";
