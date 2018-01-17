@@ -36,10 +36,40 @@ class Table {
   Table& operator=(const Table&);   // 复制赋值
 };
 
-// Table::Table(const Table& t) {
-//   p = 
-// }
+// 将复制定义清楚
+/* my test code
+Table::Table(const Table& t) {
+  p = new Name[sz = t.sz];
+  for (int i = 0; i < sz; i++) {
+    std::cout << "t[i] = " << t[i] << std::endl;
+    p[i] = t[i];
+  }
+}
 
+Table& Table::operator=(const Table& t) {
+  p = new Name[sz = t.sz];
+  for (int i = 0; i < sz; i++) {
+    std::cout << "t[i] = " << t[i] << std::endl;
+    p[i] = t[i];
+  }
+}
+*/
+
+Table::Table(const Table& t) {
+  p = new Name[sz = t.sz];
+  for (int i = 0; i < sz; i++) {
+    p[i] = t.p[i];
+  }
+}
+
+Table& Table::operator=(const Table& t) {
+  if (this != &t) {         // 防止自复制
+    delete[] p;
+    p = new Name[sz = t.sz];
+    for (int i = 0; i < sz; i++) {p[i] = t.p[i];}
+  }
+  return *this;
+}
 
 void h() {
   Table t1;
@@ -50,8 +80,20 @@ void h() {
 }
 // t1所创建而分配的数组, 将同时分配给t1, t2, t3, 被删除3次, 所导致结果是无意义的
 
+void f() {
+  Table t1(2);
+  Table t2 = t1;
+  Table t3(t1);
+}
+/*
+in Table() sz = 2
+in ~Table() sz = 2
+in ~Table() sz = 2
+in ~Table() sz = 2
+*/
 int main() {
-  h();
+  // h();
+  f();
 
   return 0;
 }
