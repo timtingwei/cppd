@@ -1,40 +1,26 @@
+ /*  ------------------------------
+    Copyright <2018> [Tim Hu]
+    email: timtingwei@hotamail.com    
+   ------------------------------
+   File:7.3.1_againMember.cpp
+   Date:Tue Jun 12 14:48:16 CST 2018
+   -----------------------------
+*/
 #include <iostream>
 
-class Screen{
-public:
+class Screen {
+ public:
+  // Screen() = default;
+  // 定义某种类型在类中的别名
   typedef std::string::size_type pos;
-  //using pos = std::string::size_type
-  Screen() = default;    //because there ara another function
-                         //so this function is neccessary
-  Screen(pos ht, pos wd, char c):height(ht), width(wd), contents( ht* wd,c) { }
-  char get() const {return contents[cursor]; }          //implicitly inline
-  inline char get(pos ht, pos wd) const;                //explicitly inline
-  Screen &move(pos r, pos c);                           //can be made inline later
-
-  
-  char Screen::get(pos r, pos c) const  //declared as inline in the class
-  {
-    pos row = r * width;      //compute row location
-    return contents[row + c]  //return character at the given column
-  }
-  
-  
-private:
-  pos cursor;
-  pos height, width;
+  // using pos = std::string::size_type;
+ private:
+  pos cursor = 0;
+  pos height = 0, width = 0;
   std::string contents;
-  
 };
 
-inline &Screen::move(pos r, pos c)
-{
-  pos row = r * width;       //compute the row location
-  cursor = row + c;          //move cursor to the column within that row
-  return *this;              //return this object as an value
-}
-
-
-
-int main(){
+int main() {
+  // Screen s1;
   return 0;
 }
