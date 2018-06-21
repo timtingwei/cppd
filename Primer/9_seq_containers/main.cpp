@@ -7,16 +7,33 @@
    -----------------------------
 */
 #include <iostream>
-#include <array>
+#include <vector>
+#include <list>
+#include <string>
+
+using std::vector; using std::list;
+using std::string;
 
 int main() {
-  std::array<int, 10> iarr1;
-  std::array<int, 10> iarr2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  std::array<int, 10> iarr3 = {3};
+  list<string> names;
+  vector<const char*> oldstyles = {"tim", "cooper"};
 
-  for (auto iter = iarr3.begin(); iter != iarr3.end(); iter++) {
+  // names = oldstyles;
+  names.assign(oldstyles.cbegin(), oldstyles.cend());
+
+  list<int> ilist(1);  // an empty element
+  ilist.assign(10, -1);
+
+  for (auto iter = ilist.cbegin(); iter != ilist.cend(); iter++)
     std::cout << *iter << std::endl;
-  }
 
+  // equal to
+  list<int> ilist1(1);  // an empty element
+  ilist1.clear();
+  ilist1.insert(ilist1.begin(), 10, -5);
+
+  for (auto iter = ilist1.cbegin(); iter != ilist1.cend(); iter++)
+    std::cout << *iter << std::endl;
+  
   return 0;
 }
