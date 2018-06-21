@@ -10,49 +10,20 @@
 #include <vector>
 #include <list>
 #include <string>
+#include "CP5_ex9_22.h"
 
 using std::vector; using std::list;
 using std::string;
 
 int main() {
-  
-  std::vector<int> ivec = {0, 1, 2, 3};
-  int i = 5;
-  ivec.push_back(i);
-  
-  string s = "tim";
-  s.push_back('H');
-  std::cout << "s = " << s << std::endl;
-  s += 'U';
-  std::cout << "s = " << s << std::endl;
+  vector<int> iv = {0, 2, 9, 3, 9, 11, 22, 2, 3, 4, 8, 9, 10, 9, 22, 3, 9};
+  int some_val = 9;
+  insert_doubleVal(iv, some_val);
 
-  std::list<int> ilist;
-  for (size_t ix = 0; ix != 4; ix++)
-    ilist.push_front(ix);  // equal to : ilist.insert(ilist.begin(), ix);
-
-  for (auto iter = ilist.cbegin(); iter != ilist.cend(); iter++)
-    std::cout << *iter << std::endl;
-
-  auto iter = ilist.end();
-  ilist.insert(iter, 5);
-  
-  for (auto iter = ilist.cbegin(); iter != ilist.cend(); iter++)
-    std::cout << *iter << std::endl;
-
-  ilist.insert(ilist.end(), {11, 22, 33, 44});
-  for (auto iter = ilist.cbegin(); iter != ilist.cend(); iter++)
-    std::cout << *iter << std::endl;
-
-  ilist.insert(ilist.begin(), ilist.begin(), ilist.end());
-  for (auto iter = ilist.cbegin(); iter != ilist.cend(); iter++)
-    std::cout << *iter << std::endl;
-
-  list<string> lst;
-  string word;
-  auto iter_s = lst.begin();
-  while (std::cin >> word) {
-    iter_s = lst.insert(iter_s, word);
-    std::cout << *iter_s << std::endl;
+  for (auto iter = iv.cbegin(); iter != iv.cend(); iter++) {
+    std::cout << *iter << " ";
   }
+  std::cout << std::endl;
+  
   return 0;
 }
