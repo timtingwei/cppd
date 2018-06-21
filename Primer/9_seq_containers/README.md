@@ -39,15 +39,23 @@ while (iter != mid) {
 ```
 
 错误:
-在while循环中, 循环条件变量iter没有发生改变, 循环终止的信号没出现
+1, 在while循环中, 循环条件变量iter没有发生改变, 循环终止的信号没出现, 对iter++, 推进迭代器
+2, 即使iter++后, 向一个vector, string, deque使用insert函数会让现有的指向容器元素的迭代器失效
+3, 即使更新了迭代器, mid也不能指向原来的中央位置的元素
 修改：
 
 ```cpp
 vector<int>::iterator iter = iv.begin();
-                      mid  = iter + iv.size() / 2;
-while (iter != mid) {
-  if (*iter == some_val)
+int org_size = iv.size(), new_ele = 0;
+
+while (iter != iv.begin() + org_size / 2 + new_ele) {
+  if (*iter == some_val) {
     iter = iv.insert(iter, some_val * 2);
+	new_ele++;             // 新元素个数增加
+	iter++, iter++;        // 递增两次, 指向x元素之后
+  } else {
+    iter++;                // 正常推进迭代器
+  }
 }
 ```
 
