@@ -8,31 +8,22 @@
 */
 #include <iostream>
 #include <vector>
-#include "CP5_ex9_2.h"
-#include "CP5_ex9_5.h"
+#include <list>
+#include <forward_list>
+#include <deque>
+#include <string>
+
+// using std::vector; using std::list; using std::deque; using std::forward_list;
+// using std::string;
 
 int main() {
-  std::cout << "hello, world\n";
-  std::vector<int> v{0, 1, 2, 3, 4};
-  std::cout << "v.begin() = " << *v.begin() << " "
-            << "v.end() = " << *v.end() << " "
-            << "--v.end() = " << *(--v.end()) << std::endl;
-  // ./a.out: v.begin() = 0 v.end() = 32767 --v.end() = 4
+  std::vector<int> ivec(10, -1);
+  std::list<std::string> svec(5, "tim");
+  std::forward_list<int> fivec(10);
+  std::deque<std::string> dsvec(10);
 
-  int val = 8;
-  auto begin = v.begin(), end = v.end();
-  while (begin != end) {
-    *begin = val;
-    begin++;
-  }
+  std::cout << "*(fivec.begin()) = " << *(fivec.begin()) << std::endl;
+  std::cout << "*(svec.begin()) = " << *(dsvec.begin()) << std::endl;
 
-  for (auto iter = v.begin(); iter != v.end(); iter++) {
-    std::cout << *iter << std::endl;
-  }
-
-  begin = v.begin(), end = v.end();
-  val = 2;
-  auto result_find_iter = findVal(begin, end, val);
-  std::cout << "*result_find_iter = " << *result_find_iter << std::endl;
   return 0;
 }
