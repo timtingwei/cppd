@@ -25,6 +25,29 @@ while (cin >> word) {
 cin读入word之后, 将word插入到迭代器iter指向的int之前, insert函数返回的迭代器也恰好指向这个新（首）元素。
 因此, 只要读入word, 每次都插入到首元素之前的位置。
 
-## ex9.19
+## ex9.22
 
-`ss` .... `sss`...
+> 假定iv是一个int的vector, 下面程序存在什么错误, 你将如何修改
+
+```cpp
+vector<int>::iterator iter = iv.begin();
+                      mid  = iter + iv.size() / 2;
+while (iter != mid) {
+  if (*iter == some_val)
+    iv.insert(iter, some_val * 2);
+}
+```
+
+错误:
+在while循环中, 循环条件变量iter没有发生改变, 循环终止的信号没出现
+修改：
+
+```cpp
+vector<int>::iterator iter = iv.begin();
+                      mid  = iter + iv.size() / 2;
+while (iter != mid) {
+  if (*iter == some_val)
+    iter = iv.insert(iter, some_val * 2);
+}
+```
+
