@@ -30,4 +30,22 @@ int main() {
   for (auto it = v.cbegin(); it != v.cend(); it++) {
     std::cout << *it << std::endl;
   }
+  std::cout << std::endl;
+
+  v.clear();
+  for (auto it = v.cbegin(); it != v.cend(); it++) {
+    std::cout << *it << std::endl;
+  }
+  std::cout << std::endl;
+
+  v.insert(v.end(), {2, 3, 4, 8, 9});
+  for (auto it = v.cbegin(); it != v.cend(); it++) {
+    std::cout << *it << std::endl;
+  }
+  std::cout << std::endl;
+
+  v.erase(v.cbegin(), v.cend());
+  for (auto it = v.cbegin(); it != v.cend(); it++) {
+    std::cout << *it << std::endl;
+  }
 }
