@@ -39,9 +39,9 @@ while (iter != mid) {
 ```
 
 错误:
-1, 在while循环中, 循环条件变量iter没有发生改变, 循环终止的信号没出现, 对iter++, 推进迭代器
-2, 即使iter++后, 向一个vector, string, deque使用insert函数会让现有的指向容器元素的迭代器失效
-3, 即使更新了迭代器, mid也不能指向原来的中央位置的元素
+* 1, 在while循环中, 循环条件变量iter没有发生改变, 循环终止的信号没出现, 对iter++, 推进迭代器
+* 2, 即使iter++后, 向一个vector, string, deque使用insert函数会让现有的指向容器元素的迭代器失效
+* 3, 即使更新了迭代器, mid也不能指向原来的中央位置的元素
 修改：
 
 ```cpp
@@ -59,3 +59,45 @@ while (iter != iv.begin() + org_size / 2 + new_ele) {
 }
 ```
 
+## ex9.23
+
+> 若P309本节第一个程序, c.size()为1, val1, val2, val3和val4值分别是什么?
+
+假设 c[0] = a;
+* val  = *c.begin();   // val为a
+* val2 = c.front();    // val2为a
+* val3 = *(--last);    // val3为a
+* val4 = c.back();     // val4为a
+
+## ex9.25
+
+> 若P312中删除一个范围内的程序, elem1=elem2会发生什么? 若elem2为尾后迭代器, 或者elem1, elem2都为尾后迭代器又会发生什么？
+
+我的想法:
+* 当 elem1 = elem2, erase nothing, return elem1 + 1;
+*    elem2 = iv.end(), erase elem1开始到末尾, 因为elem2是尾后迭代器, 因此返回也是尾后迭代器
+*    elem1 = elem2 = iv.end(), 容器没改变, 返回的也是尾后迭代器;o
+
+实际上:
+* 当 elem1 = elem2, erase nothing, return elem1;
+*    elem1 = iv.begin() + 1, elem2 = iv.end(), erase elem1开始到末尾, 因为elem2是尾后迭代器, 竟然返回elem1
+*    elem1 = elem2 = iv.end(), 容器没改变, 返回的也是尾后迭代器;
+
+很明显CP5习题集里的答案错了。
+
+`返回指向最后一个被删元素 之后的迭代器`
+
+```cpp
+vector<int> iv = {1, 2, 3};
+
+  auto elem1 = iv.begin(), elem2 = elem1;          // 1, 2, 3   | *elem1 = 1
+  auto elem1 = iv.begin() + 1, elem2 = iv.end();   // 1         | *elem1 = 2
+  auto elem1 = iv.end(),   elem2 = iv.end();  // 1, 2, 3   | *elem1 -> undefined
+
+  elem1 = iv.erase(elem1, elem2);
+
+  for (auto it = iv.cbegin(); it != iv.cend(); it++) {
+    std::cout << *it << std::endl;
+  }
+  std::cout << "*elem1 = " << *elem1 << std::endl;
+```
