@@ -32,13 +32,11 @@
 
 
 1中main.cpp, 不必要add  [示例 - 1](https://github.com/timtingwei/cppd/blob/master/Primer/9_seq_containers/main.cpp) <br>
-
-* 2中的代码实现头文件, 在main.cpp中编译测试, 通过后再 git add CP5_ex9_24.h && git commit -m ".." [示例 - 2](https://github.com/timtingwei/cppd/blob/master/Primer/9_seq_containers/CP5_ex9_26.h)<br>
-
-* 3中每次进行修改可add, commit一次 [示例 - 3](https://github.com/timtingwei/cppd/blob/master/Primer/9_seq_containers/README.md)<br>
+2中的代码实现头文件, 在main.cpp中编译测试, 通过后再 git add CP5_ex9_24.h && git commit -m ".." [示例 - 2](https://github.com/timtingwei/cppd/blob/master/Primer/9_seq_containers/CP5_ex9_26.h)<br>
+3中每次进行修改可add, commit一次 [示例 - 3](https://github.com/timtingwei/cppd/blob/master/Primer/9_seq_containers/README.md)<br>
 
 
-另外, 以下是我cpp文件的签名
+> 另外, 以下是我cpp文件的签名
 ```cpp
 /*  ------------------------------
     Copyright <2018> [Tim Hu]
@@ -50,4 +48,4 @@
 */
 ```
 
-欢迎request!
+> 欢迎request!
