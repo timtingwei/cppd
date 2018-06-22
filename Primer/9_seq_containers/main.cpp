@@ -10,20 +10,18 @@
 #include <vector>
 #include <list>
 #include <string>
-#include "CP5_ex9_22.h"
 
 using std::vector; using std::list;
 using std::string;
 
 int main() {
-  vector<int> iv = {0, 2, 9, 3, 9, 11, 22, 2, 3, 4, 8, 9, 10, 9, 22, 3, 9};
-  int some_val = 9;
-  insert_doubleVal(iv, some_val);
+  vector<int> c{2, 3, 4, 9, -2, -3};
+  if (!c.empty()) {
+    auto val1 = *c.cbegin(), val2 = c.front();
+    auto last = c.end();
 
-  for (auto iter = iv.cbegin(); iter != iv.cend(); iter++) {
-    std::cout << *iter << " ";
+    auto val3 = *(--last), val4 = c.back();
+    std::cout << "val3 = " << val3 << " " << "val 4 = " << val4 << std::endl;
   }
-  std::cout << std::endl;
-  
   return 0;
 }
