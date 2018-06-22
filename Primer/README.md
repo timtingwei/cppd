@@ -48,4 +48,4 @@
 */
 ```
 
-<span style="color:blue">*欢迎request!*</span>
+[欢迎request!](https://github.com/timtingwei/cppd/pulls)
