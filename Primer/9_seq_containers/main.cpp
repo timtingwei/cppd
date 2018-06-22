@@ -10,26 +10,24 @@
 #include <vector>
 #include <list>
 #include <string>
+#include "CP5_ex9_24.h"
 
 using std::vector; using std::list;
 using std::string;
 
 int main() {
-  vector<int> v{2, 3, 4, 9, -2, -3};
-  if (!v.empty()) {
-    v.front() = 42;
-    auto &r = v.back();
-    r = 1024;              // change the last value
-    std::cout << "v.back() = " << v.back() << std::endl;
-
-    auto nr = v.back();
-    // it's not reference to last value, can not change last one
-    nr = 88;
-    std::cout << "v.back() = " << v.back() << std::endl;
-
-    auto &r2 = v[v.size() - 1];   // change it
-    r2 = 7;
-    std::cout << "v.back() = " << v.back() << std::endl;
+  // pop odd value
+  vector<int> v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  auto iter = v.begin();
+  while (iter != v.end()) {
+    if (*iter % 2) {  // iter指向奇数
+      iter = v.erase(iter);
+    } else {
+      iter++;
+    }
   }
-  return 0;
+
+  for (auto it = v.cbegin(); it != v.cend(); it++) {
+    std::cout << *it << std::endl;
+  }
 }
