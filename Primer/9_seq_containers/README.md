@@ -189,7 +189,8 @@ void foo_33() {
 
 # ex9.34
 
->v是一个保存int的vector容器, 有奇数也有偶数, 分析下列代码 
+> v是一个保存int的vector容器, 有奇数也有偶数, 分析下列代码 
+
 ```cpp
 vector<int> v{2, 4, 6, 7, 8, 1, 4, 5};
 auto it = v.begin();
@@ -207,3 +208,64 @@ it从容器首位开始,
 * 如果it是奇数, 在it迭代器之前的位置插入it指向的元素, insert后it指向新增加的it元素, while循环不会结束,
 <br>
 改正的话, 在if语句中, insert后 添入it++;
+
+# ex9.35
+
+> 解释一个vector的capacity()和size()区别
+
+* capacity():容器中能容纳的内存空间个数; 不分配新的内存空间的前提下最多可以保存多少元素
+
+* size(): 容器中实际的元素个数; 已经保存的元素数目
+
+# ex9.36
+
+> 一个容器的capacity()能小于它的size()吗
+
+* 不能, capacity代表着分配好当前内存空间的前提下, 可以保存的元素个数, 
+
+# ex9.37
+
+> 为什么list或者array没有capacity()成员？
+
+* list和array所分配的内存空间不连续? // error
+
+* list是链表, 新元素加入用个新节点保存, 删除后该节点也被删除, 因此capacity总是等于size
+
+* array大小固定, 内存空间被一次性分配, 不会产生变化
+
+* 因此, 他们都不需要capacity
+
+# ex9.39
+
+> 解释下面一段程序做了什么?
+
+```cpp
+vector<string> svec;                           // 创建一个未定义的svec容器
+svec.reserve(1024);                            // 分配将要用到的内存空间1024
+while (cin >> word) {                          // 标准输入word
+  svec.push_back(word);                        // 每次将word添入svec尾部
+}
+svec.resize(svec.size() + svec.size() / 2);    // 容器中size()扩大1/2倍, 元素值初始化为空字符串
+```
+
+# ex9.40
+
+> 如何上题中程序读入了256个单词, 在resize之后容器的capacity是多少？如果读入word 512 1000 1028呢？
+
+预测:
+
+* 512,  svec.size() = 512 + 512/2 = 768, svec.capacity = 1024;
+
+* 1000, svec.size() = 1000 + 1000/2 = 1500, svec.capacity > 1500;
+
+* 1028, svec.size() = 1028 + 1028/2 = 1542; svec.capacity > 1542;
+
+实际情况:
+
+* 512,   c = 1024, s = 768;
+
+* 1000,  c = 2048, s = 1500;
+
+* 1028,  c = 2048, s = 1542;
+
+
