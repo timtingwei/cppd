@@ -114,3 +114,75 @@ vector<int> iv = {1, 2, 3};
 > 接受单个参数的resize版本对元素类型有什么限制？
 
 * 单个参数, 新元素进行值初始化, 因此元素类型不能是类类型, 类类型必须提供初始值, 或者元素类型必须提供一个构造函数
+
+# ex9.32
+
+> P316页程序中, iter = iv.insert(iter, *iter++); 是否合法?如果不合法, 为什么?
+
+* 当iter = iter.end()时, *(iter++)未定义, insert()返回值为插入的第一个元素的迭代器, 未定义不合法
+
+# ex9.33
+
+> 本章最后一个例子, 如果不将insert的结果附值给begin, 会发生什么? 写代码验证
+
+```cpp
+while (begin != v.end()) {
+  ++begin;        // 为了在begin之后添加元素
+  begin = v.insert(begin, 42);    // 42插入begin之前, begin指向42
+  ++begin;
+}
+```
+
+
+```
+          0, 1, 2, 3
+begin        ^
+begin++         ^
+insert()  0, 1, 42, 2, 3
+begin           ^
+begin++   0, 1, 42, 2, 3
+                    ^
+```
+
+```cpp
+while (begin != v.end()) {
+  ++begin;        // 为了在begin之后添加元素
+  v.insert(begin, 42);    // 42插入begin之前, begin指向42
+  ++begin;
+}
+```
+
+```
+          0, 1, 2, 3
+begin        ^
+begin++         ^
+insert()  0, 1, 42, 2, 3
+begin               ^ 
+begin++   0, 1, 42, 2, 3
+                       ^
+```
+
+* 可能出现insert导致迭代器失效的情况
+
+实际代码
+```cpp
+void foo_33() {
+  vector<int> v{2, 4, 6, 7, 8};
+  auto begin = v.begin();
+  while (begin != v.end()) {
+    ++begin;        // 为了在begin之后添加元素
+    v.insert(begin, 42);    // 42插入begin之前, begin指向42
+    ++begin;
+  }
+
+  for (auto it = v.cbegin(); it != v.cend(); it++)
+    std::cout << *it << " ";
+  std::cout << std::endl;
+}
+
+/*
+  ./a.out
+  a.out(44606,0x7fffa2810380) malloc: *** error for object 0x7f8602402838: incorrect checksum for freed object - object was probably modified after being freed.
+*** set a breakpoint in malloc_error_break to debug
+*/
+```
