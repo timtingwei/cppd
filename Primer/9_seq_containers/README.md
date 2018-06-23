@@ -186,3 +186,24 @@ void foo_33() {
 *** set a breakpoint in malloc_error_break to debug
 */
 ```
+
+# ex9.34
+
+>v是一个保存int的vector容器, 有奇数也有偶数, 分析下列代码 
+```cpp
+vector<int> v{2, 4, 6, 7, 8, 1, 4, 5};
+auto it = v.begin();
+  while (it != v.end()) {
+    if (*it % 2) {  // odd
+      it = v.insert(it, *it);
+      // it++;
+    }
+    it++;
+  }
+```
+
+it从容器首位开始,
+* 如果it指向偶数, it迭代器递增
+* 如果it是奇数, 在it迭代器之前的位置插入it指向的元素, insert后it指向新增加的it元素, while循环不会结束,
+<br>
+改正的话, 在if语句中, insert后 添入it++;
