@@ -10,16 +10,12 @@
 #include <vector>
 #include <list>
 #include <string>
-#include "CP5_ex9_28.h"
+#include "CP5_ex9_34.h"
 
-using std::vector; using std::list;
+using std::list; using std::vector;
 using std::string;
 
 int main() {
-  forward_list<string> s_flist = {"abc", "tim", "cooper", "tim", "hello", "tim"};
-  string s1 = "tim";
-  string s2 = "<is cool>";
-  insert_string_to_flst(s_flist, s1, s2);
-
+  foo_34();
   return 0;
 }
