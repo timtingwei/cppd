@@ -10,14 +10,26 @@
 #include <vector>
 #include <list>
 #include <string>
-#include "CP5_ex9_41.h"
+#include "CP5_ex9_45.h"
 
 using std::list; using std::vector;
 using std::string;
 
 int main() {
-  string s;
-  vector<char> cvec = {'t', 'i', 'm', 'c', 'o', 'o', 'l'};
-  init_str(cvec);
+  string s = "Tim";
+  string prefix = "Mr.", suffix = "Jr.";
+  company_name(s, prefix, suffix);
+
+  /*
+  s.insert(0, "sds");
+  std::cout << s << std::endl;
+
+  s.insert(s.cbegin(), 't');
+  std::cout << s << std::endl;
+
+  auto append_s = s.append("love");
+  std::cout << s << std::endl;
+  std::cout << "append_s = " << append_s << std::endl;
+  */
   return 0;
 }
