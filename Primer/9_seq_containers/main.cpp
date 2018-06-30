@@ -10,18 +10,17 @@
 #include <vector>
 #include <list>
 #include <string>
-#include "CP5_ex9_49.h"
+#include "CP5_ex9_51.h"
 
 using std::list; using std::vector;
 using std::string;
 
 int main() {
-  vector<string> words = {"understanding", "misunderstanding", "give", "emacs",
-                          "happy", "architecture", "computer", "science",
-                          "amused", "cart", "income", "shave", "fretful",
-                          "stir", "hurried", "list", "pot", "ambiguous",
-                          "remove", "tent"};
-  string result = max_length_words(words);
-  std::cout << "result_word is -> " << result << std::endl;
+  Date();
+  Date("January 22, 888");
+  Date("12/03/1900");
+  Date("Feb 2 1996");
+  // January 1, 1900;  1/1/1900;  Jan 1 1900;
+
   return 0;
 }
