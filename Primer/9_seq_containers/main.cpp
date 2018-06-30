@@ -10,26 +10,18 @@
 #include <vector>
 #include <list>
 #include <string>
-#include "CP5_ex9_45.h"
+#include "CP5_ex9_49.h"
 
 using std::list; using std::vector;
 using std::string;
 
 int main() {
-  string s = "Tim";
-  string prefix = "Mr.", suffix = "Jr.";
-  company_name(s, prefix, suffix);
-
-  /*
-  s.insert(0, "sds");
-  std::cout << s << std::endl;
-
-  s.insert(s.cbegin(), 't');
-  std::cout << s << std::endl;
-
-  auto append_s = s.append("love");
-  std::cout << s << std::endl;
-  std::cout << "append_s = " << append_s << std::endl;
-  */
+  vector<string> words = {"understanding", "misunderstanding", "give", "emacs",
+                          "happy", "architecture", "computer", "science",
+                          "amused", "cart", "income", "shave", "fretful",
+                          "stir", "hurried", "list", "pot", "ambiguous",
+                          "remove", "tent"};
+  string result = max_length_words(words);
+  std::cout << "result_word is -> " << result << std::endl;
   return 0;
 }
