@@ -33,7 +33,6 @@ void expand_words_in_string_by_index(string &s, const string& oldVal, const stri
   s.push_back(' ');
   std::size_t old_i = 0;
   std::size_t curr_i = 0;
-  std::size_t orig_size = s.size();
   while (curr_i != s.size()) {
     if (old_i == oldVal.size()) {   // match the oldVal string
       curr_i -= oldVal_size;
