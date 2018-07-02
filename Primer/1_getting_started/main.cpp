@@ -14,8 +14,13 @@
 #include "CP5_ex1_13_3.h"
 #include "CP5_ex1_16.h"
 #include "CP5_ex1_19.h"
+#include "CP5_ex1_20.h"
+#include "CP5_ex1_21.h"
+#include "CP5_ex1_22.h"
+#include "CP5_ex1_23.h"
 
-int main() {
-  foo_19();
-  return 0;
+int main() 
+{
+    foo_23();
+    return 0;
 }
