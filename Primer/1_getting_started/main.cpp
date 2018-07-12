@@ -19,8 +19,7 @@
 #include "CP5_ex1_22.h"
 #include "CP5_ex1_23.h"
 
-int main() 
-{
+int main() {
     foo_23();
     return 0;
 }

@@ -268,4 +268,13 @@ svec.resize(svec.size() + svec.size() / 2);    // 容器中size()扩大1/2倍, �
 
 * 1028,  c = 2048, s = 1542;
 
+# ex9.48
 
+> 假定name和numbers的定义如325所示, numbers.find(name)返回什么?
+
+```cpp
+string numbers("0123456789"), name("r2d2");
+numbers.find(name);
+```
+
+* 返回18446744073709551615, 返回一个名为string::npos的静态成员, 标准库将其类型定义为 const string::size_type类型, string::npos等于任何string最大的可能大小

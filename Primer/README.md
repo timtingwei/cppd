@@ -6,7 +6,7 @@
 // 但这样自己思考的比较少，学习效率不高, 因此改用main.cpp作为章节知识的test, 头文件来实现练习, 更注重练习的思考和实现, 减少进入细节漩涡的可能, 反馈也好一些。
 
 ## 目录
-* ch1 开始
+* ch1 [开始](https://github.com/timtingwei/cppd/tree/master/Primer/1_getting_started)
 * ch2 变量和基本类型
 * ch3 字符串, 向量, 数组
 * ch4 表达式
