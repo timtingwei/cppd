@@ -2,9 +2,11 @@
 
 int main()
 {    
-    int i = 0 , &r1 = i;
-    double d = 0,&r2 = d;
-    r1 = d;
-    std::cout<<r1<<std::endl;
+    const int v2 = 0;
+    int v1 = v2;
+    int *p1 = &v1, &r1 = v1;
+    const int *p2 = &v2;
+    p1 = p2;
+    std::cout<<p1<<std::endl;
     return 0;
 }
